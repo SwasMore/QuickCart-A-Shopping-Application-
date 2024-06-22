@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/providers/cart.dart';
+import '../providers/cart.dart';
+
+import '../widgets/app_drawer.dart';
 import './cart_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -65,11 +67,15 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const CartScreen()));
               },
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Color.fromARGB(255, 169, 237, 133),
+              ),
             ),
           ),
         ],
       ),
+      drawer: AppDrawer(),
       body: ProductsGrid(_showOnlyFavorites),
     );
   }
