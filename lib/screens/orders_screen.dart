@@ -13,7 +13,11 @@ class OrdersScreen extends StatelessWidget {
     final orderData = Provider.of<Orders>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Orders'),
+        backgroundColor: Colors.blue,
+        title: Text(
+          'Your Orders',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       drawer: AppDrawer(),
       body: ListView.builder(

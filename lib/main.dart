@@ -3,7 +3,8 @@
 //import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/providers/orders.dart';
+//import 'package:flutter_application_2/providers/product.dart';
+//import 'package:flutter_application_2/providers/orders.dart';
 import 'package:flutter_application_2/screens/cart_screen.dart';
 import './screens/product_overview_screen.dart';
 import './screens/product_detail_screen.dart';
@@ -14,6 +15,8 @@ import './providers/cart.dart';
 import './screens/orders_screen.dart';
 import './screens/user_products_screen.dart';
 import './screens/edit_product_screen.dart';
+import './providers/orders.dart';
+//import './providers/products.dart';
 
 void main() {
   runApp(const MyApp());
