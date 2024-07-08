@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/auth.dart';
 
 enum AuthMode { Signup, Login }
 
@@ -57,9 +59,9 @@ class AuthScreen extends StatelessWidget {
                         ],
                       ),
                       child: Text(
-                        'MyShop',
+                        'QuickCart',
                         style: TextStyle(
-                          color: Colors.red,
+                          color: Colors.white,
                           fontSize: 50,
                           fontFamily: 'Anton',
                           fontWeight: FontWeight.normal,
@@ -113,6 +115,8 @@ class _AuthCardState extends State<AuthCard> {
       // Log user in
     } else {
       // Sign user up
+      Provider.of<Auth>(context, listen: false)
+          .signup(_authData['email']!, _authData['password']!);
     }
     setState(() {
       _isLoading = false;
@@ -207,6 +211,7 @@ class _AuthCardState extends State<AuthCard> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0),
                       backgroundColor: Theme.of(context).primaryColor,
+                      foregroundColor: Colors.white,
                       // foregroundColor: Theme.of(context).primaryTextTheme.button.color,
                     ),
                   ),
