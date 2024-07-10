@@ -3,28 +3,27 @@ import 'package:provider/provider.dart';
 
 import '../widgets/product_item.dart';
 import '../providers/products.dart';
-//import '../providers/product.dart';
 
 class ProductsGrid extends StatelessWidget {
   final bool showFavs;
+  final String searchQuery;
 
-  ProductsGrid(this.showFavs);
+  ProductsGrid(this.showFavs, this.searchQuery);
+
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
     final products = showFavs ? productsData.favoriteItems : productsData.items;
+    final filteredProducts = products.where((product) {
+      return product.title.toLowerCase().contains(searchQuery.toLowerCase());
+    }).toList();
 
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
-      itemCount: products.length,
+      itemCount: filteredProducts.length,
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
-        // create: (c) => products[i],
-        value: products[i],
-        child: ProductItem(
-            // products[i].id,
-            // products[i].title,
-            // products[i].imageUrl,
-            ),
+        value: filteredProducts[i],
+        child: ProductItem(),
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
