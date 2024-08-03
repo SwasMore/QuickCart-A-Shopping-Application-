@@ -166,6 +166,7 @@ class Products with ChangeNotifier {
       http.Response response = await http.get(url);
 
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      // ignore: unnecessary_null_comparison
       if (extractedData == null) {
         return;
       }
